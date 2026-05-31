@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
 int subseq(string s,string output[]){
@@ -15,10 +16,24 @@ int subseq(string s,string output[]){
     return 2*smallSize;
 }
 
+void subseq1(string s,string tillnow,vector<string> &v){
+    if(s.size()==0){
+        v.push_back(tillnow);
+        return;
+    }
+    subseq1(s.substr(1),tillnow+s[0],v);
+    subseq1(s.substr(1),tillnow,v);
+}
+
 int main(){
     string s="abc";
     string *output=new string[100];
     int outputSize=subseq(s,output);
     for(int i=0;i<outputSize;i++)
         cout<<output[i]<<endl;
+    cout<<"---------"<<endl;
+    vector<string> v;
+    subseq1(s,"",v);
+    for(auto it:v)
+        cout<<it<<endl;
 }
