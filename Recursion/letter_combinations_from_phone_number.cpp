@@ -9,6 +9,9 @@ void helper(int idx,string &input,string &curr,vector<string> &mp,vector<string>
     }
     int index=input[idx]-'0';
     string corresponding=mp[index];
+    cout<<corresponding.size()<<endl;
+    if(corresponding.size()==0)
+        helper(idx+1,input,curr,mp,ans);
     for(char ch:corresponding){
         curr+=ch;
         helper(idx+1,input,curr,mp,ans);
