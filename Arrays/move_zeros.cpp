@@ -3,6 +3,7 @@
 using namespace std;
 
 vector<int> way1(vector<int> v,int n){
+    // creeate
     vector<int> temp(n,0);
     int k=0;
     for(int i=0;i<n;i++){
