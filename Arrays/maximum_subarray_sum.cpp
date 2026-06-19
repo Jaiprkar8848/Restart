@@ -35,8 +35,23 @@ int way2(vector<int> &v){
     return maxsum;
 }
 
+int way3(vector<int> &v){
+    // kadane's algorithm
+    int res=v[0];
+    int n=v.size();
+    int maxSum_ending_at_particular_element=v[0];
+    for(int i=1;i<n;i++){
+        // 2 cases
+        // include element or start new subarray from that element
+        maxSum_ending_at_particular_element=max(maxSum_ending_at_particular_element+v[i],v[i]);
+        res=max(maxSum_ending_at_particular_element,res);
+    }
+    return res;
+}
+
 int main(){
     vector<int> v={-2,1,-3,4,-1,2,1,-5,4};
     cout<<way1(v)<<endl;
     cout<<way2(v)<<endl;
+    cout<<way3(v)<<endl;
 }
