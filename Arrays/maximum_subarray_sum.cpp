@@ -49,9 +49,24 @@ int way3(vector<int> &v){
     return res;
 }
 
+int way4(vector<int> &v){
+    int ans=v[0];
+    int curr_sum=v[0];
+    int n=v.size();
+    for(int i=1;i<n;i++){
+        if(curr_sum>=0)
+            curr_sum+=v[i];
+        else
+            curr_sum=0+v[i];  // sum negative hoga toh usse acha 0 better
+        ans=max(ans,curr_sum);
+    }
+    return ans;
+}
+
 int main(){
     vector<int> v={-2,1,-3,4,-1,2,1,-5,4};
     cout<<way1(v)<<endl;
     cout<<way2(v)<<endl;
     cout<<way3(v)<<endl;
+    cout<<way4(v);
 }
