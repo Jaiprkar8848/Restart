@@ -29,15 +29,15 @@ vector<int> way2(vector<int> &v,int target){
         int to_find=target-v[i];
         // binary search
         int s=0,e=n-1;
-        while(s<e){
+        while(s<=e){
             int mid=s+(e-s)/2;
             if(temp[mid].first==to_find && temp[mid].second!=i){
                 ans.push_back(i);
                 ans.push_back(temp[mid].second);
                 return ans;
             }
-            else if(temp[mid].first<to_find) s++;
-            else e--;
+            else if(temp[mid].first<to_find) s=mid+1;
+            else e=mid-1;
         }
     }
     return ans;
