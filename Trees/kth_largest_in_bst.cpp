@@ -16,12 +16,12 @@ class Node{
 void helper(Node* root,vector<int> &ans){
     if(root==NULL)
         return;
-    helper(root->left,ans);
-    ans.push_back(root->data);
     helper(root->right,ans);
+    ans.push_back(root->data);
+    helper(root->left,ans);
 }
 
-int kthSmallest(Node* root,int k){
+int kthLargest(Node* root,int k){
     vector<int> ans;
     helper(root,ans);
     if(k>ans.size())
@@ -44,5 +44,5 @@ int main(){
     c->left=f;
     c->right=g;
     Node* root=a;
-    cout<<kthSmallest(root,4);
+    cout<<kthLargest(root,5);
 }
